@@ -16,7 +16,7 @@ func SimpleEquations(a, b, c int) interface{} {
             }
         }
     }
-    return "No solution"
+    return "no solution"
 }
 func main() {
 	fmt.Println(SimpleEquations(1, 2, 3))  //no solution

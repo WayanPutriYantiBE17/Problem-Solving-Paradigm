@@ -9,18 +9,14 @@ func DragonOfLoowater(dragonHead, knightHeight []int) string {
 	sort.Ints(dragonHead)
 	sort.Ints(knightHeight)
 
-	if len(dragonHead) > len(knightHeight){
-		return "knight fall"
-	}
-
 	n := 0
 	for _, D := range dragonHead {
-		for i, H := range knightHeight {
-			if H >= D {
-				n +=H
-				knightHeight = append(knightHeight[:i], knightHeight[i+1:]...)
-				break
-			}
+		i := sort.SearchInts(knightHeight, D)
+		if i < len(knightHeight) {
+			n += knightHeight[i]
+			knightHeight = append(knightHeight[:i], knightHeight[i+1:]...)
+		} else {
+			return "Knight Fall"
 		}
 	}
 	return fmt.Sprint(n)
